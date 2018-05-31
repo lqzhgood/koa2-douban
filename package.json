@@ -1,0 +1,23 @@
+{
+  "name": "koa2-douban",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".\\server\\index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "devtool ./server/index.js -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lqzhgood/koa2-douban.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lqzhgood/koa2-douban/issues"
+  },
+  "homepage": "https://github.com/lqzhgood/koa2-douban#readme",
+  "dependencies": {
+    "koa": "^2.5.1"
+  }
+}
