@@ -4,10 +4,85 @@ block title
     title Koa server
 
 block content
-    .container
-        .row
-            .col-md-8
-                h1 Hi #{you}
-                p This is #{me}
-            .col-md-4
-                p 测试静态页面
+    include ./includes/header
+
+    .container-fluid
+        .sidebar
+
+        .content
+            .row
+                .col-md-6
+                    .card
+                        img.card-img-top(src="123" data-video="123")
+                        .card-body
+                            h4.card-title 电影标题
+                            p.card-des miaoshu
+                        .card-footer
+                            small.text-muted 1tianqiangengxin
+                .col-md-6
+                    .card
+                        img.card-img-top(src="123" data-video="123")
+                        .card-body
+                            h4.card-title 电影标题
+                            p.card-des miaoshu
+                        .card-footer
+                            small.text-muted 1tianqiangengxin
+            .row
+                .col-md-6
+                    .card
+                        img.card-img-top(src="123" data-video="123")
+                        .card-body
+                            h4.card-title 电影标题
+                            p.card-des miaoshu
+                        .card-footer
+                            small.text-muted 1tianqiangengxin
+                .col-md-6
+                    .card
+                        img.card-img-top(src="123" data-video="123")
+                        .card-body
+                            h4.card-title 电影标题
+                            p.card-des miaoshu
+                        .card-footer
+                            small.text-muted 1tianqiangengxin
+    #myModal.modal.fade.bd-example-modal-lg(tabindex="-1", role="dialog", aria-labelledby="myLargeModalLabel", aria-hidden="true")
+        .modal-dialog.modal-lg
+            #videoModal.modal-content
+
+    include ./includes/script
+
+    script.
+        let player = null;
+
+        $(document).ready(function(){
+            $("#myModal").on('hidden.bs.modal',function(e){
+                if (player && player.pause) player.pause();
+            })
+
+
+            $(".card-img-top").click(function(e){
+                let video = $(this).data('video')
+                let image = $(this).attr('src')
+
+                $("#myModal").modal('show')
+
+                if (!player){
+                    player = new DPlayer({
+                        container: document.getElementById('videoModal'),
+                        screenshot:true,
+                        video:{
+                            url:video,
+                            pic:image,
+                            thumbnails:image
+                        }
+                    })
+                }else{
+                    if (player.video.currentSrc != video){
+                        player.switchVideo({
+                            url:video,
+                            pic:image,
+                            type:'auto'
+                        })
+                    }
+                }
+            })
+        })
