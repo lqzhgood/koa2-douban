@@ -50,6 +50,8 @@ const URL = "https://movie.douban.com/tag/#/?sort=R&range=6,10&tags=";
 
 	browser.close();
 	process.send({ result });
+	process.exit(0);
+
 })()
 
 
